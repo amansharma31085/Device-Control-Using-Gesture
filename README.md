@@ -1,4 +1,4 @@
-🖐️ Device Control Using Gesture
+#🖐️ Device Control Using Gesture
 ✨ Overview
 Welcome to Device Control Using Gesture! This innovative project leverages the power of computer vision and machine learning to enable intuitive, touchless control of your computer using simple hand gestures. Say goodbye to your mouse and keyboard for common tasks – just wave your hand!
 
