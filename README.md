@@ -1,99 +1,144 @@
-🤖 Device Control Using Gesture
-This project is an AI-powered computer vision system that allows you to control your device using hand gestures. Built with OpenCV, MediaPipe, and Python, it enables touchless interaction by recognizing hand and finger movements to perform real-time actions such as mouse movement, clicks, and launching applications.
+🖐️ Device Control Using Gesture
+✨ Overview
+Welcome to Device Control Using Gesture! This innovative project leverages the power of computer vision and machine learning to enable intuitive, touchless control of your computer using simple hand gestures. Say goodbye to your mouse and keyboard for common tasks – just wave your hand!
 
-📌 Features
-Real-time Hand Tracking: Utilizes your webcam for accurate, real-time hand tracking.
+Built with Python, OpenCV, MediaPipe, and PyTorch, this system provides a seamless and responsive way to interact with your device in real-time.
 
-Mouse Control: Move the mouse cursor smoothly using your index finger.
+🌟 Features
+👁️ Real-time Hand Tracking: Utilizes your webcam for robust and accurate hand detection and landmark tracking.
 
-Click Simulation: Perform clicks using a pinch gesture (thumb + index finger).
+🖱️ Intuitive Mouse Control: Move your mouse cursor smoothly across the screen by simply moving your index finger.
 
-Application Launching: Launch specific applications like Notepad, Calculator, Chrome, and File Explorer with predefined gestures (e.g., fist for Notepad, thumbs_up for Calculator, peace for Chrome, open_palm for File Explorer).
+👆 Effortless Clicks: Simulate mouse clicks with a natural pinch gesture (bringing your thumb and index finger together).
 
-System Controls:
+🚀 Application Launching: Launch your favorite applications with specific, predefined gestures:
 
-Screen Lock: Lock your screen with an open_palm gesture using two hands.
+✌️ Peace: Opens Google Chrome
 
-Volume Mute: Mute audio with a thumbs_down gesture.
+✊ Fist: Launches Notepad
 
-Play/Pause Toggle: Toggle media play/pause with an okay gesture.
+👍 Thumbs Up: Starts Calculator
 
-Zoom Control: Zoom in/out by spreading two fingers.
+✋ Open Palm: Opens File Explorer
 
-Customizable Gestures: Easily collect new gesture data and retrain the model to recognize custom gestures.
+🔒 System Controls at Your Fingertips:
 
-Robust Framework: Built on the powerful MediaPipe and OpenCV frameworks for hand tracking and computer vision, with a custom GestureNet neural network implemented in PyTorch for gesture recognition.
+👐 Double Open Palm: Instantly locks your screen for privacy.
 
-⚙️ How it Works
-The system operates in several key stages:
+👎 Thumbs Down: Mutes/unmutes your system audio.
 
-Data Collection (collect_data.py): This script allows you to record hand landmark data for specific gestures using your webcam. It prompts you to enter a gesture name (e.g., "fist", "open", "peace") and saves the collected landmarks as JSON files in a data/ directory. Each sample includes the gesture label and 3D coordinates (x, y, z) for 21 hand landmarks.
+👌 OK Gesture: Toggles play/pause for media.
 
-Model Training (train_model.py): After collecting data, this script trains a neural network, GestureNet, using the collected landmark data. It splits the data into training and testing sets, and then trains the model to classify gestures. The trained model (gesture_model.pth) and a mapping of labels to indices (labels.json) are saved for later use.
+↔️ Two-Finger Spread: Enables zoom in/out functionality (e.g., in browsers or documents).
 
-Real-time Prediction (predict_gesture.py): This script loads the trained model and provides real-time gesture recognition. It captures video from your webcam, processes hand landmarks, and displays the predicted gesture label on the screen.
+🧠 Customizable & Adaptable: Easily collect new gesture data and retrain the underlying neural network to recognize your own custom gestures, making the system truly personal.
 
-Device Control (gesture_control.py): This is the core application for controlling your device. It loads the trained GestureNet model and uses MediaPipe to detect hands in real-time. Based on the recognized gestures and hand movements, it utilizes pyautogui and subprocess to simulate mouse actions (movement, clicks), launch applications, and perform system-level controls like screen locking, volume muting, and media play/pause.
+💪 Robust & Efficient: Powered by the highly optimized MediaPipe for hand detection and a custom GestureNet neural network in PyTorch for precise gesture classification.
 
-Retraining (retrain.py): This script offers an interactive way to collect new gesture data and retrain the model directly. It allows you to record new gestures and then retrain the GestureNet model with the updated dataset, making the system adaptable to new gestures and environments.
+⚙️ How It Works
+The magic behind this project unfolds through a series of interconnected Python scripts:
+
+collect_data.py:
+
+Purpose: Gathers raw hand landmark data from your webcam for specific gestures.
+
+Process: You provide a gesture name (e.g., "fist", "open_palm"), and the script records the 3D coordinates (x, y, z) of 21 hand landmarks for each frame where a hand is detected. This data is saved as JSON files in the data/ directory.
+
+train_model.py:
+
+Purpose: Trains the GestureNet neural network to recognize the gestures from your collected data.
+
+Process: It loads all JSON data from the data/ directory, prepares it for training, and then trains a deep learning model using PyTorch. The trained model (gesture_model.pth) and a mapping of gesture names to numerical labels (labels.json) are saved.
+
+predict_gesture.py:
+
+Purpose: Provides a real-time visualization of gesture recognition.
+
+Process: Loads the trained model and labels.json, captures video from your webcam, processes hand landmarks in real-time, and overlays the predicted gesture name directly onto the video feed.
+
+gesture_control.py:
+
+Purpose: The main application for real-time device control.
+
+Process: Continuously monitors your hand gestures using the trained model. Based on the recognized gesture and hand position, it uses pyautogui to simulate mouse movements and clicks, and subprocess to launch applications or perform system-level actions (like screen locking or volume control).
+
+retrain.py:
+
+Purpose: Offers an interactive way to expand your gesture library and update the model.
+
+Process: Allows you to record new gesture data on the fly and then retrain the GestureNet model with the augmented dataset, ensuring your system remains adaptable and accurate.
 
 🚀 Getting Started
 Prerequisites
-Before you begin, ensure you have the following installed:
+Before diving in, make sure you have the following installed on your system:
 
-Python 3.x
+Python 3.x (recommended 3.8+)
 
 pip (Python package installer)
 
-A webcam
+A functioning webcam
 
 Installation
 Clone the repository:
 
-Bash
-
 git clone https://github.com/amansharma31085/Device-control-using-gesture.git
 cd Device-control-using-gesture
+
 Install dependencies:
 
-Bash
-
 pip install opencv-python mediapipe numpy torch pyautogui scikit-learn
-Usage
-Collect Data for Gestures:
-Run collect_data.py to gather data for your desired gestures. Follow the on-screen prompts to name your gestures (e.g., fist, open, peace).
 
-Bash
+Usage
+Follow these steps to set up and run the gesture control system:
+
+Collect Data for Your Gestures:
+Start by training the system with your own gestures. Run collect_data.py and follow the prompts.
 
 python collect_data.py
-This will create JSON files in a data/ directory (e.g., data/fist.json, data/open.json).
 
-Train the Model:
-Once you have collected enough data, run train_model.py to train your gesture recognition model. This will generate gesture_model.pth and labels.json.
+Example: When prompted, type fist and make a fist gesture for a few seconds. Repeat for other gestures like open_palm, peace, thumbs_up, thumbs_down, okay, etc.
+This will create JSON files (e.g., data/fist.json, data/open_palm.json) in the data/ directory.
 
-Bash
+Train Your Gesture Recognition Model:
+Once you've collected sufficient data for all your desired gestures, train the model:
 
 python train_model.py
-Run Device Control:
-After training, execute gesture_control.py to start controlling your device with gestures.
 
-Bash
+This will generate gesture_model.pth (your trained model) and labels.json (the mapping of gesture names to internal labels).
+
+Start Device Control!
+With the model trained, you can now launch the main control application:
 
 python gesture_control.py
-Ensure your webcam is active and visible. Press 'q' to quit.
+
+A webcam feed will appear. Position your hand clearly, and start using your gestures! Press q to quit the application.
 
 Real-time Gesture Prediction (Optional):
-To see real-time predictions without device control, use predict_gesture.py.
-
-Bash
+If you just want to see the model's predictions in real-time without activating controls, use predict_gesture.py:
 
 python predict_gesture.py
-Press 'q' to quit.
 
-Retrain Model (Optional):
-Use retrain.py to collect new gesture data and retrain the model directly from an interactive interface.
+Press q to quit.
 
-Bash
+Retrain Model (Advanced/Optional):
+To add new gestures or improve existing ones, retrain.py offers an interactive way to do so:
 
 python retrain.py
-Press 'r' to record a new gesture, 't' to retrain the model, and 'q' to quit.
+
+Press r to record a new gesture (you'll be prompted for its name).
+
+Press t to retrain the model with all current data (including newly collected gestures).
+
+Press q to quit.
+
+🤝 Contributing
+Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
+
+🙏 Acknowledgments
+MediaPipe for robust hand tracking.
+
+OpenCV for webcam integration and image processing.
+
+PyTorch for the deep learning framework.
+
+PyAutoGUI for programmatic control of the mouse and keyboard.
