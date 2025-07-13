@@ -56,33 +56,33 @@ Built with Python, OpenCV, MediaPipe, and PyTorch, this system provides a seamle
 
 * **collect_data.py:**
 
-**Purpose: Gathers raw hand landmark data from your webcam for specific gestures.**
+**Purpose:** Gathers raw hand landmark data from your webcam for specific gestures.
 
-**Process: You provide a gesture name (e.g., "fist", "open_palm"), and the script records the 3D coordinates (x, y, z) of 21 hand landmarks for each frame where a hand is detected. This data is saved as JSON files in the data/ directory.**
+**Process:** You provide a gesture name (e.g., "fist", "open_palm"), and the script records the 3D coordinates (x, y, z) of 21 hand landmarks for each frame where a hand is detected. This data is saved as JSON files in the data/ directory.
 
 * **train_model.py:**
 
-**Purpose: Trains the GestureNet neural network to recognize the gestures from your collected data.**
+**Purpose:** Trains the GestureNet neural network to recognize the gestures from your collected data.
 
-**Process: It loads all JSON data from the data/ directory, prepares it for training, and then trains a deep learning model using PyTorch. The trained model (gesture_model.pth) and a mapping of gesture names to numerical labels (labels.json) are saved.**
+**Process:** It loads all JSON data from the data/ directory, prepares it for training, and then trains a deep learning model using PyTorch. The trained model (gesture_model.pth) and a mapping of gesture names to numerical labels (labels.json) are saved.
 
 * **predict_gesture.py:**
 
-**Purpose: Provides a real-time visualization of gesture recognition.**
+**Purpose:** Provides a real-time visualization of gesture recognition.
 
-**Process: Loads the trained model and labels.json, captures video from your webcam, processes hand landmarks in real-time, and overlays the predicted gesture name directly onto the video feed.**
+**Process:** Loads the trained model and labels.json, captures video from your webcam, processes hand landmarks in real-time, and overlays the predicted gesture name directly onto the video feed.
 
 * **gesture_control.py:**
 
-**Purpose: The main application for real-time device control.**
+**Purpose:** The main application for real-time device control.
 
-**Process: Continuously monitors your hand gestures using the trained model. Based on the recognized gesture and hand position, it uses pyautogui to simulate mouse movements and clicks, and subprocess to launch applications or perform system-level actions (like screen locking or volume control).**
+**Process:** Continuously monitors your hand gestures using the trained model. Based on the recognized gesture and hand position, it uses pyautogui to simulate mouse movements and clicks, and subprocess to launch applications or perform system-level actions (like screen locking or volume control).
 
 * **retrain.py:**
 
-**Purpose: Offers an interactive way to expand your gesture library and update the model.**
+**Purpose:** Offers an interactive way to expand your gesture library and update the model.
 
-**Process: Allows you to record new gesture data on the fly and then retrain the GestureNet model with the augmented dataset, ensuring your system remains adaptable and accurate.**
+**Process:** Allows you to record new gesture data on the fly and then retrain the GestureNet model with the augmented dataset, ensuring your system remains adaptable and accurate.
 
 # 🚀 Getting Started
 **Prerequisites**
