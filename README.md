@@ -1,4 +1,4 @@
-#🖐️ Device Control Using Gesture
+🖐️ Device Control Using Gesture
 ✨ Overview
 Welcome to Device Control Using Gesture! This innovative project leverages the power of computer vision and machine learning to enable intuitive, touchless control of your computer using simple hand gestures. Say goodbye to your mouse and keyboard for common tasks – just wave your hand!
 
@@ -133,6 +133,9 @@ Press q to quit.
 
 🤝 Contributing
 Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
+
+📜 License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 🙏 Acknowledgments
 MediaPipe for robust hand tracking.
