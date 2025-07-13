@@ -156,9 +156,6 @@ Press q to quit.
 # 🤝 Contributing
 Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
 
-# 📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 # 🙏 Acknowledgments
 MediaPipe for robust hand tracking.
 
